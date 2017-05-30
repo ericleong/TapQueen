@@ -1,0 +1,5 @@
+<resources>
+    <string name="app_name">Tap Queen</string>
+    <string name="start">Start</string>
+    <string name="high_score">High Score: %1$d</string>
+</resources>
