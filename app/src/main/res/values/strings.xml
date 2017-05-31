@@ -1,7 +1,7 @@
 <resources xmlns:xliff="urn:oasis:names:tc:xliff:document:1.2">
     <string name="app_name">Tap Queen</string>
     <string name="start">Start</string>
-    <string name="high_score">High Score: %1$d</string>
+    <string name="high_score">High Score: <xliff:g id="count">%1$d</xliff:g></string>
     <string name="negative_duration">\u2212%1$s</string>
     <!-- Phrase describing a time duration using seconds [CHAR LIMIT=16] -->
     <plurals name="duration_seconds">
@@ -18,4 +18,9 @@
         <item quantity="one">1 hour</item>
         <item quantity="other"><xliff:g id="count">%d</xliff:g> hours</item>
     </plurals>
+    <string-array name="durations">
+        <item>3s</item>
+        <item>10s</item>
+        <item>30s</item>
+    </string-array>
 </resources>
