@@ -2,6 +2,8 @@ package me.ericleong.tapqueen
 
 import android.annotation.SuppressLint
 import android.content.Context
+import android.graphics.drawable.RippleDrawable
+import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
@@ -52,7 +54,23 @@ class MainActivity : AppCompatActivity() {
             }
         }
 
-        val gestureListener = object : GestureDetector.SimpleOnGestureListener() {
+        val gestureListener = object : GestureDetector.OnGestureListener {
+            override fun onShowPress(e: MotionEvent?) {
+                button.background.setState(intArrayOf(android.R.attr.state_pressed, android.R.attr.state_enabled))
+            }
+
+            override fun onFling(e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float): Boolean {
+                return false
+            }
+
+            override fun onScroll(e1: MotionEvent?, e2: MotionEvent?, distanceX: Float, distanceY: Float): Boolean {
+                return false
+            }
+
+            override fun onLongPress(e: MotionEvent?) {
+
+            }
+
             override fun onDown(e: MotionEvent?): Boolean {
                 if (!started) {
                     started = true
@@ -66,7 +84,13 @@ class MainActivity : AppCompatActivity() {
 
                 button.text = count.toString()
 
-                return true
+                return false
+            }
+
+            override fun onSingleTapUp(e: MotionEvent?): Boolean {
+                button.background.setState(intArrayOf())
+
+                return false
             }
         }
         val gestureDetector = GestureDetector(this, gestureListener)

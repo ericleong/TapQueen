@@ -9,11 +9,12 @@
     tools:layout_editor_absoluteX="0dp">
 
     <Button
+        style="@style/Widget.AppCompat.Button.Borderless.Colored"
         android:id="@+id/button"
         android:layout_width="0dp"
         android:layout_height="0dp"
         android:layout_margin="16dp"
-        android:background="@color/colorAccent"
+        android:background="@drawable/tap"
         android:text="@string/start"
         android:textColor="@color/text_light"
         android:textSize="64sp"
