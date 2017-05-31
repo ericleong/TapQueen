@@ -27,12 +27,13 @@
         android:orientation="horizontal"
         app:layout_constraintGuide_percent="0.5" />
 
-    <Chronometer
+    <me.ericleong.tapqueen.Chronometer
         android:id="@+id/chronometer"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="8dp"
         android:textSize="64sp"
+        app:countDown="true"
         app:layout_constraintTop_toTopOf="@+id/guideline"
         android:layout_marginBottom="8dp"
         app:layout_constraintEnd_toEndOf="parent"

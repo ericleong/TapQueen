@@ -1,13 +1,14 @@
 package me.ericleong.tapqueen
 
 import android.annotation.SuppressLint
+import android.content.Context
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.WindowManager
 import android.widget.Button
-import android.widget.Chronometer
 import android.widget.TextView
 import android.widget.Toast
 import java.util.concurrent.TimeUnit
@@ -27,15 +28,18 @@ class MainActivity : AppCompatActivity() {
         highScore.text = resources.getString(R.string.high_score, 0)
 
         val button = findViewById(R.id.button) as Button
-
         val chronometer = findViewById(R.id.chronometer) as Chronometer
-        chronometer.isCountDown = true
+
+        val display =
+                (getSystemService(Context.WINDOW_SERVICE) as WindowManager).getDefaultDisplay();
+        val frameDuration = (TimeUnit.SECONDS.toMillis(1) / display.refreshRate).toLong()
 
         val gestureListener = object : GestureDetector.SimpleOnGestureListener() {
             override fun onDown(e: MotionEvent?): Boolean {
                 if (!started) {
                     started = true
-                    chronometer.base = SystemClock.elapsedRealtime() + TimeUnit.SECONDS.toMillis(3)
+                    chronometer.base =
+                            SystemClock.elapsedRealtime() + TimeUnit.SECONDS.toMillis(3) + frameDuration
                     chronometer.start()
                 } else {
                     count++
