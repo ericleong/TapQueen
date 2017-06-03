@@ -2,8 +2,6 @@ package me.ericleong.tapqueen
 
 import android.annotation.SuppressLint
 import android.content.Context
-import android.graphics.drawable.RippleDrawable
-import android.os.Build
 import android.os.Bundle
 import android.os.SystemClock
 import android.support.v7.app.AppCompatActivity
