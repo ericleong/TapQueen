@@ -254,7 +254,7 @@ public class Chronometer extends AppCompatTextView {
     private synchronized void updateText(long now) {
         mNow = now;
         long seconds = mCountDown ? mBase - now : now - mBase;
-        seconds /= 1000;
+        seconds = (long) Math.ceil(seconds / 1000.0f);
         boolean negative = false;
         if (seconds < 0) {
             seconds = -seconds;
@@ -292,7 +292,7 @@ public class Chronometer extends AppCompatTextView {
             if (running) {
                 updateText(SystemClock.elapsedRealtime());
                 dispatchChronometerTick();
-                postDelayed(mTickRunnable, 1000);
+                post(mTickRunnable);
             } else {
                 removeCallbacks(mTickRunnable);
             }
@@ -306,7 +306,7 @@ public class Chronometer extends AppCompatTextView {
             if (mRunning) {
                 updateText(SystemClock.elapsedRealtime());
                 dispatchChronometerTick();
-                postDelayed(mTickRunnable, 1000);
+                post(mTickRunnable);
             }
         }
     };

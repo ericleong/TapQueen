@@ -73,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 if (!started) {
                     started = true
                     chronometer.base =
-                            SystemClock.elapsedRealtime() + TimeUnit.SECONDS.toMillis(duration) + frameDuration
+                            SystemClock.elapsedRealtime() + TimeUnit.SECONDS.toMillis(duration)
                     chronometer.start()
                     durations.isEnabled = false
                 } else {
