@@ -25,17 +25,17 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        val highScore = findViewById(R.id.highScore) as TextView
+        val highScore = findViewById<TextView>(R.id.highScore)
         highScore.text = resources.getString(R.string.high_score, 0)
 
-        val button = findViewById(R.id.button) as Button
-        val chronometer = findViewById(R.id.chronometer) as Chronometer
+        val button = findViewById<Button>(R.id.button)
+        val chronometer = findViewById<Chronometer>(R.id.chronometer)
 
         val display =
                 (getSystemService(Context.WINDOW_SERVICE) as WindowManager).getDefaultDisplay()
         val frameDuration = (TimeUnit.SECONDS.toMillis(1) / display.refreshRate).toLong()
 
-        val durations = findViewById(R.id.durations) as Spinner
+        val durations = findViewById<Spinner>(R.id.durations)
         val adapter = ArrayAdapter.createFromResource(this, R.array.durations,
                 R.layout.item_duration)
         durations.adapter = adapter
