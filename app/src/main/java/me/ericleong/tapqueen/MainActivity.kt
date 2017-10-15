@@ -16,7 +16,8 @@ class MainActivity : AppCompatActivity() {
 
     var started = false
     var count = 0
-    var high = mutableMapOf(Pair(3L, 0), Pair(10L, 0), Pair(30L, 0))
+    var highScores = mutableMapOf(Pair(3L, 0), Pair(10L, 0), Pair(30L, 0))
+    var lastScores = mutableMapOf(Pair(3L, 0), Pair(10L, 0), Pair(30L, 0))
     var duration = TimeUnit.SECONDS.toMillis(3)
     var maxDurations = listOf(3L, 10L, 30L);
 
@@ -27,6 +28,9 @@ class MainActivity : AppCompatActivity() {
 
         val highScore = findViewById<TextView>(R.id.highScore)
         highScore.text = resources.getString(R.string.high_score, 0)
+
+        val lastScore = findViewById<TextView>(R.id.lastScore)
+        lastScore.text = resources.getString(R.string.last_score, 0)
 
         val button = findViewById<Button>(R.id.button)
         val chronometer = findViewById<Chronometer>(R.id.chronometer)
@@ -43,12 +47,14 @@ class MainActivity : AppCompatActivity() {
         durations.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
             override fun onNothingSelected(parent: AdapterView<*>?) {
                 duration = 3
-                highScore.text = resources.getString(R.string.high_score, high[duration])
+                highScore.text = resources.getString(R.string.high_score, highScores[duration])
+                lastScore.text = resources.getString(R.string.last_score, lastScores[duration])
             }
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 duration = maxDurations.get(position);
-                highScore.text = resources.getString(R.string.high_score, high[duration])
+                highScore.text = resources.getString(R.string.high_score, highScores[duration])
+                lastScore.text = resources.getString(R.string.last_score, lastScores[duration])
             }
         }
 
@@ -100,10 +106,11 @@ class MainActivity : AppCompatActivity() {
                 started = false
                 c.stop()
 
-                Toast.makeText(this, count.toString(), Toast.LENGTH_SHORT).show()
+                lastScores[duration] = count
+                lastScore.text = resources.getString(R.string.last_score, count)
 
-                if (count > high[duration] ?: 0) {
-                    high[duration] = count
+                if (count > highScores[duration] ?: 0) {
+                    highScores[duration] = count
 
                     highScore.text = resources.getString(R.string.high_score, count)
                 }

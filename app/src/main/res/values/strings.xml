@@ -2,6 +2,7 @@
     <string name="app_name">Tap Queen</string>
     <string name="start">Start</string>
     <string name="high_score">High Score: <xliff:g id="count">%1$d</xliff:g></string>
+    <string name="last_score">Previous: <xliff:g id="count">%1$d</xliff:g></string>
     <string name="negative_duration">\u2212%1$s</string>
     <!-- Phrase describing a time duration using seconds [CHAR LIMIT=16] -->
     <plurals name="duration_seconds">
